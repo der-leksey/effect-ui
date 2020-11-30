@@ -4,8 +4,70 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Document</title>
+	<link rel="stylesheet" href="css/inputs.css">
 </head>
 <body>
-	Hello world
+	<div id="app">
+		<section>
+			<h2 class="caption">ef-input</h2>
+			<ef-input v-model="hello" label="Hello"></ef-input>
+		</section>
+		
+		<section>
+			<h2 class="caption">ef-radio</h2>
+			<ef-radio v-model="radio" name="radio1" val=1>Radio one</ef-radio>
+			<ef-radio v-model="radio" name="radio1" val=2>Radio two</ef-radio>
+		</section>
+
+		<section>
+			<h2 class="caption">ef-checkbox</h2>
+			<ef-checkbox v-model="cbx" name="cbx" val=1>Cbx one</ef-checkbox>
+			<ef-checkbox v-model="cbx" name="cbx" val=2>Cbx two</ef-checkbox>
+			<ef-checkbox v-model="cbxBool" name="cbx" true-val="true-val" false-val="false-val" val=1>cbxBool</ef-checkbox>
+		</section>
+
+		<section>
+			<h2 class="caption">ef-pagination</h2>
+			<ef-pagination
+				:total="total"
+				:limit="limit"
+				:page.sync="page"
+				@change="pagination($event)"
+			></ef-pagination>
+		</section>
+
+
+		<section>
+<pre>
+{{hello}}
+{{radio}}
+{{cbx}}
+{{cbxBool}}
+{{page}}
+</pre>
+		</section>
+	</div>
+
+	<script src="dist/ef.bundle.js"></script>
+	<script>
+		var app = new Vue({
+			el: '#app',
+			data: {
+				hello: 'Hello World!',
+				radio: '',
+				cbx: [],
+				cbxBool: '',
+				
+				total: 110,
+				page: 1,
+				limit: 10,
+			},
+			methods: {
+				pagination(p) {
+					console.log(p)
+				}
+			}
+		})
+	</script>
 </body>
 </html>

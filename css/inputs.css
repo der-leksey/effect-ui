@@ -1,0 +1,375 @@
+/*
+Инпуты, чекбоксы, формы, кнопки
+*/
+:root {
+	--color-border: #000;
+	--color-1: blue;
+	--color-primary: blue;
+	--input-height: 45px;
+}
+
+.input {
+	height: var(--input-height);
+	width: 100%;
+	padding: 0 15px;
+	border-radius: var(--radius);
+	border: 1px solid var(--color-border);
+	transition: all .2s;
+	line-height: 1;
+	color: inherit;
+}
+
+textarea.input {
+	height: 84px;
+	padding-top: calc(var(--input-height) / 2 - 0.5em);
+	resize: vertical;
+}
+
+.input:focus {
+	border-color: #000;
+}
+
+
+.field {
+	display: block;
+	position: relative;
+}
+.field + .field {
+	margin-top: 15px;
+}
+
+
+.field-label {
+	position: absolute;
+	top: 0; left: 12px;
+	height: var(--input-height);
+	padding: 0 5px;
+	display: flex;
+	align-items: center;
+	pointer-events: none;
+	transition: all .2s;
+	background: linear-gradient(0deg, transparent 25%, var(--color-bgr) 25%, var(--color-bgr) 75%, transparent 75%);
+}
+
+[required] ~ .field-label::after {
+	content: '*';
+}
+
+.field-error,
+.field-message {
+	margin-top: 3px;
+	font-size: 13px;
+}
+.field-error {
+	display: inline-block;
+	color: var(--color-error);
+}
+
+
+:not(select):focus ~ .field-label,
+:not(select):not(:placeholder-shown) ~ .field-label,
+.not-empty ~ .field-label{
+	height: 12px;
+	top: -5px;
+	font-size: 12px;
+}
+
+@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+	.field-label {
+		height: 12px;
+		top: -5px;
+		font-size: 12px;
+	}
+}
+
+:focus ~ .field-label {
+	color: var(--color-1);
+}
+
+.show-validate :invalid:focus {
+	border-color: var(--color-error);
+}
+.show-validate :invalid ~ .field-label,
+.field.is-error .field-label {
+	color: var(--color-error);
+}
+
+
+
+.field-icon {
+	position: absolute;
+	z-index: 1;
+	display: flex;
+	align-items: center; 
+	justify-content: center;
+	top: 0; right: 0;
+	height: var(--input-height);
+	width: 2.5em;
+	pointer-events: none;
+}
+.field-icon::before {
+	content: '';
+}
+
+select ~ .field-icon::before {
+	width: .6em; height: .6em;
+	margin-top: -0.27em;
+	border: 0 solid currentColor;
+	border-width: 2px 2px 0 0;
+	transform: rotate(135deg);
+	opacity: 0.5;
+}
+
+
+
+
+
+.checkbox,
+.radio {
+	display: flex;
+	align-items: center;
+	padding: 6px 0;
+	font-weight: 300;
+	font-size: 14px;
+}
+
+.checkbox input,
+.radio input {
+	display: none;
+}
+.checkbox-check,
+.radio-check {
+	position: relative;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	min-width: 25px;
+	height: 25px;
+	margin-right: 10px;
+	border: 1px solid #d4d4d4;
+	border-radius: var(--radius);
+	transition: all .15s;
+}
+.checkbox-check::after {
+	position: absolute;
+	top: -1px; right: -1px; left: -1px; bottom: -1px;
+	content: '';
+	transition: all .15s;
+	transform: scale(0);
+	background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' height='24' viewBox='0 0 24 24' width='24'%3E%3Cpath d='M0 0h24v24H0z' fill='none'/%3E%3Cpath fill='%23fff' d='M9 16.2L4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4L9 16.2z'/%3E%3C/svg%3E");
+}
+:checked ~ .checkbox-check::after,
+:checked ~ .radio-check::after {
+	opacity: 1;
+	background-color: var(--color-primary);
+	transform: none;
+}
+
+.checkbox:hover .checkbox-check,
+.radio:hover .radio-check {
+	border-color: #999;
+}
+
+.radio-check {
+	border-radius: 50%;
+}
+.radio-check::after {
+	content: '';
+	width: 15px; height: 15px;
+	transition: all .15s;
+	transform: scale(0);
+	background: var(--color-primary);
+	border-radius: 50%;
+}
+
+.radio.disabled,
+.checkbox.disabled {
+	opacity: 0.4;
+	pointer-events: none;
+}
+
+.radio-required {
+	position: relative;
+}
+.radio-required div {
+	display: none;
+}
+.show-validate .radio-required :invalid ~ div {
+	display: block;
+	margin-bottom: 5px;
+	color: var(--color-error);
+}
+.radio-required input {
+	position: absolute;
+	z-index: -10;
+	bottom: 0; left: 0;
+	opacity: 0;
+}
+
+
+
+.popup {
+	padding: var(--gap);
+	border-radius: var(--radius);
+}
+
+
+.form .title {
+	margin-bottom: 22px;
+}
+
+.form-privacy {
+	margin-top: 11px;
+	color: #a9a9a9;
+	font-size: .875rem;
+}
+.form-privacy a {
+	text-decoration: underline;
+}
+.form-error-block,
+.form-success-block {
+	padding: 10px 10px 10px 20px;
+	margin-top: 20px;
+	font-size: 0.875rem;
+	background-color: hsl(0, 0%, 95%);
+	border-left: 6px solid var(--color-error);
+}
+.form-success-block {
+	border-left-color: hsl(123, 92%, 34%);
+}
+
+.form-success {
+	font-size: 1.125rem;
+	font-weight: 500;
+	text-align: center;
+}
+.form-button {
+	margin-top: 20px;
+}
+
+
+
+
+.search {
+	position: relative;
+	z-index: 10;
+}
+.search .input {
+	position: relative;
+	z-index: 1;
+}
+.search.is-expanded .input {
+	border-bottom-left-radius: 0;
+	border-bottom-right-radius: 0;
+}
+.search .input:focus {
+	border: 1px solid var(--color-border);
+}
+.search-lists {
+	position: absolute;
+	top: 100%; left: 0; right: 0;
+	padding: 10px 0;
+	margin-top: -1px;
+	background-color: #fff;
+	box-shadow: 0 0 15px rgba(0,0,0,.15);
+	border-radius: 0 0 var(--radius) var(--radius);
+	border: 1px solid var(--color-border);
+	font-size: 14px;
+}
+.search-item-link, 
+.search-empty {
+	display: block;
+	padding: 5px 15px;
+	transition: none;
+}
+.search-item-link:hover {
+	background-color: hsla(var(--hsl-primary), .1);
+}
+.search-empty {
+	color: var(--color-text-light);
+}
+.search-list-title {
+	padding: 5px 15px;
+	font-weight: 600;
+	color: #858585;
+}
+.search-list:not(:last-of-type) {
+	margin-bottom: 10px;
+}
+
+
+
+
+
+
+
+.is-loading .field-icon::before,
+.button.is-loading::before,
+.ajaxchunk.loading .button::before {
+	content: '';
+	width: 1.25rem; height: 1.25rem;
+	animation: spinAround 500ms infinite linear;
+	border: 1px solid currentColor;
+	border-radius: 50%;
+	border-right-color: transparent !important;
+	border-top-color: transparent !important;
+}
+
+.button.is-loading span,
+.ajaxchunk.loading .button span {
+	color: transparent;
+}
+
+
+
+@keyframes spinAround {
+	from { transform: rotate(0deg); }
+	to { transform: rotate(359deg); }
+}
+
+
+
+
+.alert-enter-active {
+	animation: bounce .4s;
+}
+.alert-leave-active {
+	animation: bounce .4s reverse;
+}
+
+
+.error-enter-active {
+	animation: shake .5s;
+}
+.error-leave-active {
+	transition: all .4s;
+	opacity: 0;
+}
+
+
+
+@keyframes bounce {
+	0% {
+		transform: translateX(-200px);
+		opacity: 0;
+	}
+	100% {
+		transform: translateX(0);
+		opacity: 1;
+	}
+}
+
+@keyframes shake {
+    10%, 90% {
+		transform: translate3d(-1px, 0, 0);
+    }
+    20%, 80% {
+        transform: translate3d(2px, 0, 0);
+    }
+    30%, 50%, 70% {
+        transform: translate3d(-4px, 0, 0);
+    }
+    40%, 60% {
+        transform: translate3d(4px, 0, 0);
+    }
+}
