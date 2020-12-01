@@ -2,7 +2,6 @@
 const path = require('path');
 const VueLoaderPlugin = require('vue-loader/lib/plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const CopyPlugin = require('copy-webpack-plugin');
 
 const vendorPath = path.resolve(__dirname, './vendor');
 
@@ -13,25 +12,14 @@ module.exports = (env, argv) => {
     const plugins = [
         new VueLoaderPlugin(),
         new MiniCssExtractPlugin({
-            filename: 'ef.bundle.min.css',
+            filename: 'effect-ui.css',
         })
     ];
 
     if (argv.mode === 'production') {
-		entry['ef.bundle.min'] = './index.js',
-        entry.polyfills = './polyfills.js';
-        /** копируем библиотеки */
-        plugins.push(
-            new CopyPlugin({
-                patterns: [
-                    { from: 'node_modules/vue/dist/vue.min.js', to: vendorPath },
-                    { from: 'node_modules/vue/dist/vue.js', to: vendorPath },
-                    { from: 'node_modules/nouislider/distribute', to: vendorPath },
-                ],
-            }),
-        )
+		entry['effect-ui.min'] = './index.js';
     } else {
-        entry['ef.bundle'] = './index.js';
+        entry['effect-ui'] = './index.js';
 	}
 
     return {
@@ -72,11 +60,6 @@ module.exports = (env, argv) => {
    
             ],
         },
-        resolve: {
-            alias: {
-                'vue-esm$': 'vue/dist/vue.esm.js'
-            }
-        }
 	}
 	
 }

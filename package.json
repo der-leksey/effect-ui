@@ -1,10 +1,10 @@
 {
-  "name": "effect_fw",
+  "name": "Effect_UI",
   "version": "0.1.0",
   "description": "",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/der-leksey/effect-framework.git"
+    "url": "git+https://github.com/der-leksey/effect-ui.git"
   },
   "main": "index.js",
   "scripts": {
@@ -17,7 +17,6 @@
     "@babel/core": "^7.9.6",
     "@babel/preset-env": "^7.9.6",
     "babel-loader": "^8.0.6",
-    "copy-webpack-plugin": "^6.0.1",
     "css-loader": "^3.4.2",
     "cssnano": "^4.1.10",
     "mini-css-extract-plugin": "^0.9.0",
@@ -29,10 +28,6 @@
     "webpack-cli": "^3.3.10"
   },
   "dependencies": {
-    "@babel/polyfill": "^7.8.3",
-    "ie11-custom-properties": "^3.0.6",
-    "nouislider": "^14.5.0",
-    "vue": "^2.6.11",
-    "whatwg-fetch": "^3.0.0"
+    "nouislider": "^14.6.3"
   }
 }
