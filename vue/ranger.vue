@@ -43,7 +43,7 @@ export default {
 		value: {},
 		limits: {},
         step: {
-            default: 10,
+            default: 1,
         },
     },
 
