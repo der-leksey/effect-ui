@@ -4,11 +4,11 @@
         <div class="ranger-inputs">
             <label>
                 <span>от</span>
-                <input :step="step" class="input" @change="update('min')" type="number" v-model="min">
+                <input :step="step" class="input" @change="update('min')" type="number" v-model.number="min">
             </label>
             <label>
                 <span>до</span>
-                <input :step="step" class="input" @change="update('max')" type="number" v-model="max">
+                <input :step="step" class="input" @change="update('max')" type="number" v-model.number="max">
             </label>
 		</div>
 
@@ -35,7 +35,7 @@ export default {
         update(m) {
 			typeof(noUiSlider) !== 'undefined' && this.$refs.slider.noUiSlider.set([this.min, this.max]);
 			m == 'min' ? this.$emit('update:min', this.min) : this.$emit('update:max', this.max);
-			this.$emit('range');
+			this.$emit('range', [this.min, this.max]);
 		}
     },
 
@@ -87,12 +87,12 @@ export default {
 				this.min = Math.round(values[0]);
 				this.max = Math.round(values[1]);
 			});
-			this.$refs.slider.noUiSlider.on('set', (values, handle) => {
+			this.$refs.slider.noUiSlider.on('end', (values, handle) => {
 				if (this.value.length) {
 					//this.$emit('update:min', this.min);
 					//this.$emit('update:max', this.max);
 					this.$nextTick(() => {
-						this.$emit('range');
+						this.$emit('range', [this.min, this.max]);
 					})
 					
 				}

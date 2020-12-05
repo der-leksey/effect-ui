@@ -3,8 +3,9 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Document</title>
+	<title>Effect UI</title>
 	<link rel="stylesheet" href="css/inputs.css">
+	<link rel="stylesheet" href="dist/effect-ui.css">
 </head>
 <body>
 	<div id="app">
@@ -36,6 +37,14 @@
 			></ef-pagination>
 		</section>
 
+		<section>
+			<h2 class="caption">ef-ranger</h2>
+			<ef-ranger
+				@range="change($event)"
+				:limits="[200, 2000]"
+				v-model="diapason"
+			></ef-ranger>
+		</section>
 
 		<section>
 <pre>
@@ -44,6 +53,7 @@
 {{cbx}}
 {{cbxBool}}
 {{page}}
+{{diapason}}
 </pre>
 		</section>
 	</div>
@@ -64,10 +74,14 @@
 				total: 110,
 				page: 1,
 				limit: 10,
+				diapason: [450, 1000]
 			},
 			methods: {
 				pagination(p) {
 					console.log(p)
+				},
+				change(val) {
+					console.log(val)
 				}
 			}
 		})
