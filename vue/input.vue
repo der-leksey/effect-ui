@@ -16,7 +16,7 @@
 			:value="computedValue"
 			@input="onInput($event)"
 			@blur="blured = true"
-			:placeholder="placeholder || ''"
+			:placeholder="placeholder"
 		></textarea>
 
 		<input v-else

@@ -4,51 +4,55 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Effect UI</title>
+	<link rel="stylesheet" href="styles.css">
 </head>
 <body>
 	<div id="app">
-		<section>
-			<h2 class="caption">ef-input</h2>
-			<ef-input v-model="form.hello" label="Hello"></ef-input>
-		</section>
+		<form action="">
+			<section>
+				<h2 class="caption">ef-input</h2>
+				<ef-input v-model="form.hello" label="Hello"></ef-input>
+			</section>
 
-		<section>
-			<h2 class="caption">ef-input-file</h2>
-			<ef-input v-model="form.file" label="Upload" type="file"></ef-input>
-		</section>
-		
-		<section>
-			<h2 class="caption">ef-radio</h2>
-			<ef-radio v-model="radio" name="radio1" val=1>Radio one</ef-radio>
-			<ef-radio v-model="radio" name="radio1" val=2>Radio two</ef-radio>
-		</section>
+			<section>
+				<h2 class="caption">ef-input-file</h2>
+				<ef-input v-model="form.file" label="Upload" type="file"></ef-input>
+			</section>
+			
+			<section>
+				<h2 class="caption">ef-radio</h2>
+				<ef-radio v-model="radio" name="radio1" val=1>Radio one</ef-radio>
+				<ef-radio v-model="radio" name="radio1" val=2>Radio two</ef-radio>
+			</section>
 
-		<section>
-			<h2 class="caption">ef-checkbox</h2>
-			<ef-checkbox v-model="cbx" name="cbx" val=1>Cbx one</ef-checkbox>
-			<ef-checkbox v-model="cbx" name="cbx" val=2>Cbx two</ef-checkbox>
-			<ef-checkbox v-model="cbxBool" name="cbx" true-val="true-val" false-val="false-val" val=1>cbxBool</ef-checkbox>
-		</section>
+			<section>
+				<h2 class="caption">ef-checkbox</h2>
+				<ef-checkbox v-model="cbx" name="cbx" val=1>Cbx one</ef-checkbox>
+				<ef-checkbox v-model="cbx" name="cbx" val=2>Cbx two</ef-checkbox>
+				<ef-checkbox v-model="cbxBool" name="cbx" true-val="true-val" false-val="false-val" val=1>cbxBool</ef-checkbox>
+			</section>
 
-		<section>
-			<h2 class="caption">ef-pagination</h2>
-			<ef-pagination
-				:total="total"
-				:limit="limit"
-				:page.sync="page"
-				@change="pagination($event)"
-			></ef-pagination>
-		</section>
+			<section>
+				<h2 class="caption">ef-pagination</h2>
+				<ef-pagination
+					:total="total"
+					:limit="limit"
+					:page.sync="page"
+					@change="pagination($event)"
+				></ef-pagination>
+			</section>
 
-		<section>
-			<h2 class="caption">ef-ranger</h2>
-			<ef-ranger
-				@range="change($event)"
-				:limits="[200, 2000]"
-				v-model="diapason"
-			></ef-ranger>
-		</section>
+			<section>
+				<h2 class="caption">ef-ranger</h2>
+				<ef-ranger
+					@range="change($event)"
+					:limits="[200, 2000]"
+					v-model="diapason"
+				></ef-ranger>
+			</section>
 
+			<input type="reset">
+		</form>
 		<section>
 <pre>
 {{form}}
