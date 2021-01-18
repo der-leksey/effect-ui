@@ -4,14 +4,17 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Effect UI</title>
-	<link rel="stylesheet" href="css/inputs.css">
-	<link rel="stylesheet" href="dist/effect-ui.css">
 </head>
 <body>
 	<div id="app">
 		<section>
 			<h2 class="caption">ef-input</h2>
-			<ef-input v-model="hello" label="Hello"></ef-input>
+			<ef-input v-model="form.hello" label="Hello"></ef-input>
+		</section>
+
+		<section>
+			<h2 class="caption">ef-input-file</h2>
+			<ef-input v-model="form.file" label="Upload" type="file"></ef-input>
 		</section>
 		
 		<section>
@@ -48,7 +51,7 @@
 
 		<section>
 <pre>
-{{hello}}
+{{form}}
 {{radio}}
 {{cbx}}
 {{cbxBool}}
@@ -66,7 +69,7 @@
 		var app = new Vue({
 			el: '#app',
 			data: {
-				hello: 'Hello World!',
+				form: {},
 				radio: '',
 				cbx: [],
 				cbxBool: '',

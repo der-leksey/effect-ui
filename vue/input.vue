@@ -1,7 +1,7 @@
 <template>
 	<label
 		class="field"
-		:class="{'not-empty': value || filename, 'show-validate': blured}"
+		:class="[{'not-empty': value} || {filename, 'show-validate': blured}, 'field-type-' + type]"
 	>
 		<input v-if="type=='file'"
 			v-bind="$attrs"
@@ -29,10 +29,14 @@
 			:pattern="patterns[type]"
 			:placeholder="placeholder"
 		>
-   
-		<span class="field-label">
-			{{ filename || label }}
+
+		<span v-if="type=='file'" class="field-filename">
+			{{ filename }}
 		</span>
+		<span class="field-label">
+			{{ label }}
+		</span>
+		<slot></slot>
 		<span class="field-bar"></span>
 
 		<transition name="error">
