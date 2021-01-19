@@ -45,7 +45,7 @@
 			<section>
 				<h2 class="caption">ef-ranger</h2>
 				<ef-ranger
-					@range="change($event)"
+					@range="changeRanger($event)"
 					:limits="[200, 2000]"
 					v-model="diapason"
 				></ef-ranger>
@@ -68,6 +68,8 @@
 
 	
 	<script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/14.6.3/nouislider.min.css" rel="stylesheet">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/14.6.3/nouislider.min.js" integrity="sha512-EnXkkBUGl2gBm/EIZEgwWpQNavsnBbeMtjklwAa7jLj60mJk932aqzXFmdPKCG6ge/i8iOCK0Uwl1Qp+S0zowg==" crossorigin="anonymous"></script>
 	<script src="dist/effect-ui.js"></script>
 	<script>
 		var app = new Vue({
@@ -87,7 +89,7 @@
 				pagination(p) {
 					console.log(p)
 				},
-				change(val) {
+				changeRanger(val) {
 					console.log(val)
 				}
 			}

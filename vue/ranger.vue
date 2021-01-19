@@ -87,7 +87,7 @@ export default {
 				this.min = Math.round(values[0]);
 				this.max = Math.round(values[1]);
 			});
-			this.$refs.slider.noUiSlider.on('end', (values, handle) => {
+			this.$refs.slider.noUiSlider.on('change', (values, handle) => {
 				if (this.value.length) {
 					//this.$emit('update:min', this.min);
 					//this.$emit('update:max', this.max);
