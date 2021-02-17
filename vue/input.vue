@@ -28,6 +28,18 @@
 			:placeholder="placeholder"
 		></textarea>
 
+		<input v-else-if="mask"
+			v-mask="mask"
+			v-bind="$attrs"
+			class="input"
+			:type="type"
+			:value="computedValue"
+			@input="onInput($event)"
+			@blur="blured = true"
+			:pattern="pattern || '.{' + mask.length + '}'"
+			:placeholder="placeholder"
+		>
+
 		<input v-else
 			v-bind="$attrs"
 			class="input"
@@ -35,7 +47,7 @@
 			:value="computedValue"
 			@input="onInput($event)"
 			@blur="blured = true"
-			:pattern="patterns[type]"
+			:pattern="pattern || patterns[type]"
 			:placeholder="placeholder"
 		>
 
@@ -48,6 +60,9 @@
 
 
 <script>
+import VueTheMask from 'vue-the-mask'
+Vue.use(VueTheMask)
+
 export default {
 
 	methods: {
@@ -92,6 +107,8 @@ export default {
 		placeholder: {
 			default: ' '
 		},
+		mask: {},
+		pattern: {},
 	},
 
 	computed: {

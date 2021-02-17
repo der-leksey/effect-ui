@@ -1,7 +1,7 @@
 //const webpack = require('webpack');
 const path = require('path');
 const VueLoaderPlugin = require('vue-loader/lib/plugin');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+//const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 const vendorPath = path.resolve(__dirname, './vendor');
 
@@ -11,9 +11,9 @@ module.exports = (env, argv) => {
 
     const plugins = [
         new VueLoaderPlugin(),
-        new MiniCssExtractPlugin({
+        /*new MiniCssExtractPlugin({
             filename: 'effect-ui.css',
-        })
+        })*/
     ];
 
     if (argv.mode === 'production') {
@@ -34,7 +34,7 @@ module.exports = (env, argv) => {
                     test: /\.vue$/,
                     loader: 'vue-loader'
                 },
-                {
+                /*{
                     test: /\.css$/i,
                     use: [
                         MiniCssExtractPlugin.loader,
@@ -46,7 +46,7 @@ module.exports = (env, argv) => {
                             }
                         }
                     ],
-                },
+                },*/
                 {
                     test: /\.m?js$/,
                     exclude: /(node_modules)/,

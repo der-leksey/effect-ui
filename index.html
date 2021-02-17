@@ -9,6 +9,9 @@
 <body>
 	<div id="app">
 		<form action="">
+
+			<button>submit</button>
+
 			<section>
 				<h2 class="caption">ef-input</h2>
 				<ef-input v-model="form.hello" label="Hello" message="message"></ef-input>
@@ -20,7 +23,14 @@
 					error='<span class="error">Это поле обязательно для заполнения.</span> <span class="error">Ваше значение не совпадает с предполагаемым форматом.</span>'
 				></ef-input>
 			</section>
-
+			
+			<section>
+				<h2 class="caption">ef-masked-tel</h2>
+				<ef-input v-model="form.tel" label="Phone" type="tel"
+					mask="+7 (###) ###-##-##"
+					required
+				></ef-input>
+			</section>
 			 
 			<section>
 				<h2 class="caption">ef-input-file</h2>
