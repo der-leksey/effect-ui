@@ -1,8 +1,6 @@
 # Effect UI
 
-* Библиотеки:
-    - nouislider
-* vue-компоненты
+* Vue-компоненты
     - input
     - radio
     - checkbox

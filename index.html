@@ -11,9 +11,17 @@
 		<form action="">
 			<section>
 				<h2 class="caption">ef-input</h2>
-				<ef-input v-model="form.hello" label="Hello"></ef-input>
+				<ef-input v-model="form.hello" label="Hello" message="message"></ef-input>
 			</section>
 
+			<section>
+				<h2 class="caption">ef-input-error</h2>
+				<ef-input v-model="form.hello" label="Hello"
+					error='<span class="error">Это поле обязательно для заполнения.</span> <span class="error">Ваше значение не совпадает с предполагаемым форматом.</span>'
+				></ef-input>
+			</section>
+
+			 
 			<section>
 				<h2 class="caption">ef-input-file</h2>
 				<ef-input v-model="form.file" label="Upload" type="file"></ef-input>

@@ -2,7 +2,16 @@
 	<label
 		class="field"
 		:class="[{'not-empty': value} || {filename, 'show-validate': blured}, 'field-type-' + type]"
-	>
+	>	
+
+		<transition name="error">
+			<span v-if="error" class="field-error" v-html="error"></span>
+		</transition>
+
+		<span v-if="message && !error" class="field-message" v-html="message"></span>
+		
+		<span v-if="type=='file'" class="field-filename" v-html="filename"></span>
+
 		<input v-if="type=='file'"
 			v-bind="$attrs"
 			class="input"
@@ -30,20 +39,9 @@
 			:placeholder="placeholder"
 		>
 
-		<span v-if="type=='file'" class="field-filename">
-			{{ filename }}
-		</span>
-		<span class="field-label">
-			{{ label }}
-		</span>
+		<span class="field-label" v-html="label"></span>
 		<slot></slot>
 		<span class="field-bar"></span>
-
-		<transition name="error">
-			<span v-if="error" class="field-error">{{ error }}</span>
-		</transition>
-
-		<span v-if="message && !error" class="field-message">{{ message }}</span>
 		
 	</label>
 </template>

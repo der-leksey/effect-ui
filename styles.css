@@ -252,7 +252,8 @@
 
 	.field {
 		--input-height: 50px;
-		display: block;
+		display: flex;
+		flex-direction: column-reverse;
 		position: relative;
 	}
 	.field + .field {
@@ -280,7 +281,7 @@
 	}
 	
 	:not(select):focus ~ .field-label,
-	:not(select):not(:placeholder-shown) ~ .field-label,
+	.input:not(select):not(:placeholder-shown) ~ .field-label,
 	.not-empty ~ .field-label {
 		height: 1em;
 		top: 8px;
