@@ -6,9 +6,8 @@
             <li v-if="!p">
                 <span class="pagination-dots">...</span>
             </li>
-            <li v-else>
+            <li v-else :class="{ 'is-active' : p == page }">
                 <a class="pagination-link"
-                    :class="{ 'is-active' : p == page }"
                     @click.prevent="click(p)"
                     :href="path + '?page='+p"
                 >
